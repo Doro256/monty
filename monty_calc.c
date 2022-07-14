@@ -72,18 +72,19 @@ void _div(stack_t **stack, unsigned int line_number)
 		fclose(var_global.file);
 		free_dlistint(*stack);
 		exit(EXIT_FAILURE);
-		else if ((*stack)->n == 0)
-		{
-			fprintf(stderr, "L%d: division by zero\n", line_number);
-			free(var_global.buffer);
-			fclose(var_global.file);
-			free_dlistint(*stack);
-			exit(EXIT_FAILURE);
-		}
-		else
-		{
-			div = (*stack)->n;
-			_pop(stack, line_number);
-			(*stack)->n /= div;
-		}
+	}
+	else if ((*stack)->n == 0)
+	{
+		fprintf(stderr, "L%d: division by zero\n", line_number);
+		free(var_global.buffer);
+		fclose(var_global.file);
+		free_dlistint(*stack);
+		exit(EXIT_FAILURE);
+	}
+	else
+	{
+		div = (*stack)->n;
+		_pop(stack, line_number);
+		(*stack)->n /= div;
+	}
 }
